@@ -3,4 +3,8 @@
 Application for Movie find and store
 
 
+Ключ API
+16b3fe2a855ea9b31def086faf1d915d
+Токен доступу для читання API
+eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNmIzZmUyYTg1NWVhOWIzMWRlZjA4NmZhZjFkOTE1ZCIsInN1YiI6IjY1MDRmOWE4ZmEyN2Y0MDEwYzQ5NWZmMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aco7kgH7AVSDlJRBovgjUQ9BMrJvW6kY7Xqdllm0fao
 
