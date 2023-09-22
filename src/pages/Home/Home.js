@@ -31,7 +31,7 @@ export default function Home() {
     return () => { controllerRef.current.abort() };
   }, []);
 
-  return <div>home content
+  return <div>
    {loader}
    {error}
    <Trends movies={trends} />

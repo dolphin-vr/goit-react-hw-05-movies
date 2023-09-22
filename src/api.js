@@ -16,7 +16,8 @@ async function serviceGetTrends(sig) {
   return data;
 }
 
-async function serviceGetMovieDetails(id) {
+async function serviceGetMovieDetails(id, sig) {
+  configAx.signal = sig;
    const { data } = await axios(`/movie/${id}`, configAx);
    return data;
  }
