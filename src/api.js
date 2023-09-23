@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+const IMG_BASE_PATH = 'https://image.tmdb.org/t/p/';
+const POSTER_SIZE = 'w200';
+
 const configAx = {
    method: 'GET',
    baseURL: 'https://api.themoviedb.org/3/',
@@ -18,8 +21,21 @@ async function serviceGetTrends(sig) {
 
 async function serviceGetMovieDetails(id, sig) {
   configAx.signal = sig;
-   const { data } = await axios(`/movie/${id}`, configAx);
-   return data;
- }
+  const { data } = await axios(`/movie/${id}`, configAx);
+  return data;
+}
 
-export { serviceGetTrends, serviceGetMovieDetails };
+async function serviceGetMovieCredits(id, sig) {
+  configAx.signal = sig;
+  const { data } = await axios(`/movie/${id}/credits`, configAx);
+  return data;
+}
+// movie/movie_id/credits
+async function serviceGetMovieReviews(id, sig) {
+  configAx.signal = sig;
+  const { data } = await axios(`/movie/${id}/reviews`, configAx);
+  return data;
+}
+
+
+export { serviceGetTrends, serviceGetMovieDetails, serviceGetMovieCredits, serviceGetMovieReviews, IMG_BASE_PATH, POSTER_SIZE };
