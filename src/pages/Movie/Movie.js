@@ -4,6 +4,8 @@ import { serviceGetMovieDetails } from 'api';
 import { Description } from 'components/Description/Description';
 import { Loader } from 'components/Loader/Loader';
 import { ErrMsg } from 'components/SharedLayout.styled';
+import { AdditionNav, NavItem } from './Movie.styled';
+import { Link, Outlet  } from 'react-router-dom';
 
 export default function Movie() {
   const { id } = useParams();
@@ -18,9 +20,9 @@ export default function Movie() {
     }
     controllerRef.current = new AbortController();
 
+    setLoader(true);
     async function getDetails() {
       try {
-        setLoader(true);
         setError(false);
         const responce = await serviceGetMovieDetails(id, controllerRef.current.signal);
         setMovie(responce);
@@ -36,11 +38,19 @@ export default function Movie() {
   }, [id]);
 
   const showDetails = !!movie;
-  console.log('showDetails= ', showDetails);
+  
   return (
     <div>
       {loader && <Loader />}
-      {showDetails && <Description movie={movie} />}
+      {showDetails && <>
+        <Description movie={movie} />
+        <p>Additional information</p>
+          <AdditionNav>
+            <NavItem><Link to="cast">Cast</Link></NavItem>
+            <NavItem><Link to="review">Reviews</Link></NavItem>
+          </AdditionNav>
+          <Outlet />
+        </>}
       {error && <ErrMsg>Some Error</ErrMsg>}
     </div>
   );
