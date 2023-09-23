@@ -1,6 +1,7 @@
 import { serviceGetMovieReviews } from 'api';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { ReviewAuthor, ReviewItem, ReviewList, ReviewText } from './Review.styled';
 
 export const Review = () => {
   const { id } = useParams();
@@ -35,8 +36,12 @@ export const Review = () => {
 
   return (
     <div>
-      <span>reviews section {id}</span>
-      {showReview && <div>{reviews[0].author} : {reviews[0].content}</div>}
+      {showReview && <ReviewList>
+         {reviews.map(el=><ReviewItem key={el.id}>
+            <ReviewAuthor>Author: {el.author}</ReviewAuthor>
+            <ReviewText>{el.content}</ReviewText>
+         </ReviewItem>)}
+         </ReviewList>}
       {errorr && <span>ooops</span> }
     </div>
   );
