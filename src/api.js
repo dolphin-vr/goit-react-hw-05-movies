@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const IMG_BASE_PATH = 'https://image.tmdb.org/t/p/';
 const POSTER_SIZE = 'w200';
+const PHOTO_SIZE = 'w185';
 
 const configAx = {
    method: 'GET',
@@ -38,4 +39,5 @@ async function serviceGetMovieReviews(id, sig) {
 }
 
 
-export { serviceGetTrends, serviceGetMovieDetails, serviceGetMovieCredits, serviceGetMovieReviews, IMG_BASE_PATH, POSTER_SIZE };
+export { serviceGetTrends, serviceGetMovieDetails, serviceGetMovieCredits, serviceGetMovieReviews, 
+  IMG_BASE_PATH, POSTER_SIZE, PHOTO_SIZE };

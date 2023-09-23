@@ -1,17 +1,17 @@
-import { useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { serviceGetMovieDetails } from 'api';
 import { Description } from 'components/Description/Description';
 import { Loader } from 'components/Loader/Loader';
 import { ErrMsg } from 'components/SharedLayout.styled';
 import { AdditionNav, NavItem } from './Movie.styled';
-import { Link, Outlet  } from 'react-router-dom';
 
 export default function Movie() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+  const location = useLocation();
 
   const controllerRef = useRef();
   useEffect(() => {
@@ -38,9 +38,11 @@ export default function Movie() {
   }, [id]);
 
   const showDetails = !!movie;
+  const backLink = location.state?.from ?? '/';
   
   return (
     <div>
+      <Link to={backLink}>&#129144; Go Back</Link>
       {loader && <Loader />}
       {showDetails && <>
         <Description movie={movie} />
@@ -51,7 +53,7 @@ export default function Movie() {
           </AdditionNav>
           <Outlet />
         </>}
-      {error && <ErrMsg>Some Error</ErrMsg>}
+      {error && <ErrMsg>Sorry, something went wrong. Try reload page</ErrMsg>}
     </div>
   );
 }

@@ -1,14 +1,15 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
-import { serviceGetMovieCredits } from 'api';
+import { IMG_BASE_PATH, PHOTO_SIZE, serviceGetMovieCredits } from 'api';
 import { Loader } from 'components/Loader/Loader';
-// import { ErrMsg } from 'components/SharedLayout.styled';
+import { Actor, CreditsItem, CretitsList, Role } from './Cast.styled';
+import { ErrMsg } from 'components/SharedLayout.styled';
 
 export const Cast = ()=>{
    const { id } = useParams();
    const [credits, setCredits] = useState(null);
    const [loaderc, setLoaderc] = useState(false);
-   const [errorc, setErrorc] = useState(false);
+   const [errorc, setErrorc] = useState(null);
 
    const controllerCast = useRef();
    useEffect(() => {
@@ -37,48 +38,18 @@ export const Cast = ()=>{
      };
    }, [id]);
 
-  //  console.log('credits= ', credits);
    const showCast = !!credits
    if (loaderc === errorc) {}
    return (
       <div>
       {loaderc && <Loader />}
-       <span>Casting {id} cr-len </span>
-       {showCast && <div>{credits.cast[0].name} as {credits.cast[0].character} : {credits.cast[0].profile_path}</div>}
+       {showCast && <CretitsList>
+          {credits.cast.map(el=><CreditsItem key={el.id}>
+            <img src={IMG_BASE_PATH+PHOTO_SIZE+el.profile_path} alt={el.name}/>
+            <Actor>{el.name} <Role>as {el.character}</Role></Actor>
+          </CreditsItem>)}
+        </CretitsList> }
+      {errorc && <ErrMsg>Sorry, something went wrong. Try reload page Cast</ErrMsg>}
       </div>
    )
 }
-
-// {
-//    "id": 565770,
-//    "cast": [
-//      {
-//        "adult": false,
-//        "gender": 2,
-//        "id": 1185997,
-//        "known_for_department": "Acting",
-//        "name": "Xolo Mariduena",
-//        "original_name": "Xolo Mariduena",
-//        "popularity": 38.07,
-//        "profile_path": "/tJMI7BpjlhHSMpzSz9e1XxygnKd.jpg",
-//        "cast_id": 8,
-//        "character": "Jaime Reyes",
-//        "credit_id": "6108c3452f8d090048e996c9",
-//        "order": 0
-//      },
-//      {
-//        "adult": false,
-//        "gender": 1,
-//        "id": 4038,
-//        "known_for_department": "Acting",
-//        "name": "Susan Sarandon",
-//        "original_name": "Susan Sarandon",
-//        "popularity": 31.538,
-//        "profile_path": "/oHYYL8bNakAREaLUBtMul5uMG0A.jpg",
-//        "cast_id": 19,
-//        "character": "Victoria Kord",
-//        "credit_id": "62587acf09191b0065327af2",
-//        "order": 2
-//      },
-//    ]
-//  }
