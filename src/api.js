@@ -31,13 +31,20 @@ async function serviceGetMovieCredits(id, sig) {
   const { data } = await axios(`/movie/${id}/credits`, configAx);
   return data;
 }
-// movie/movie_id/credits
+
 async function serviceGetMovieReviews(id, sig) {
   configAx.signal = sig;
   const { data } = await axios(`/movie/${id}/reviews`, configAx);
   return data;
 }
 
+async function serviceSerchMovie(query, sig) {
+  configAx.signal = sig;
+  const { data } = await axios(`/search/movie?query=${query}`, configAx);
+  return data;
+}
 
-export { serviceGetTrends, serviceGetMovieDetails, serviceGetMovieCredits, serviceGetMovieReviews, 
+
+export { serviceGetTrends, serviceGetMovieDetails, serviceGetMovieCredits, serviceGetMovieReviews, serviceSerchMovie,
   IMG_BASE_PATH, POSTER_SIZE, PHOTO_SIZE };
+  
