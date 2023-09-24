@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ReviewAuthor, ReviewItem, ReviewList, ReviewText } from './Review.styled';
 
-export const Review = () => {
+const Review = () => {
   const { id } = useParams();
   const [reviews, setReviews] = useState([]);
   const [errorr, setErrorr] = useState(false);
@@ -47,3 +47,4 @@ export const Review = () => {
     </div>
   );
 };
+export default Review;

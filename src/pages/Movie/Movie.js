@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { serviceGetMovieDetails } from 'api';
@@ -51,7 +52,9 @@ export default function Movie() {
             <NavItem><Link to="cast">Cast</Link></NavItem>
             <NavItem><Link to="review">Reviews</Link></NavItem>
           </AdditionNav>
-          <Outlet />
+          <Suspense fallback={<div>Loading subpage...</div>}>
+            <Outlet />
+          </Suspense>
         </>}
       {error && <ErrMsg>Sorry, something went wrong. Try reload page</ErrMsg>}
     </div>
