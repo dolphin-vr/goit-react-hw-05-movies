@@ -1,11 +1,12 @@
 import { IMG_BASE_PATH, POSTER_SIZE } from 'api';
-import { Info, MovieCard } from './Description.styled';
+import { Image, Info, MovieCard } from './Description.styled';
+import noImgUrl from '../../img/noimage-available.svg';
 
 export const Description = ({ movie }) => {
-  const posterUrl = IMG_BASE_PATH + POSTER_SIZE + movie.poster_path;
+  const posterUrl = movie.poster_path ? IMG_BASE_PATH + POSTER_SIZE + movie.poster_path : noImgUrl;
   return (
     <MovieCard>
-      <img src={posterUrl} alt={movie.title} />
+      <Image src={posterUrl} alt={movie.title} />
       <Info>
         <h2>
           {movie.title} ({movie.release_date.substring(0, 4)})
