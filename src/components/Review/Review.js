@@ -32,17 +32,18 @@ export const Review = () => {
     };
   }, [id]);
 //   console.log('reviews= ', reviews)
-  const showReview = !!reviews.length;
+  const showReview = reviews.length>0;
 
   return (
     <div>
-      {showReview && <ReviewList>
+      {showReview ? <ReviewList>
          {reviews.map(el=><ReviewItem key={el.id}>
             <ReviewAuthor>Author: {el.author}</ReviewAuthor>
             <ReviewText>{el.content}</ReviewText>
          </ReviewItem>)}
-         </ReviewList>}
-      {errorr && <span>ooops</span> }
+         </ReviewList>
+         : <p>We don't have any reviews for this movie</p>}
+      {errorr && <span>Sorry, something went wrong. Try reload page</span> }
     </div>
   );
 };
