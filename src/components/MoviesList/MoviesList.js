@@ -5,7 +5,7 @@ export const MoviesList = ({movies})=>{
    const location = useLocation();
    return(
       <List>
-         {movies.map(el=><ListItem key={el.id}><Link to={`/movies/${el.id}` } state={{ from: location }} >{el.title}</Link></ListItem>)}
+         {movies.map(el=><ListItem key={el.id}><Link to={`/movies/${el.id}` } state={{ from: location }} >{el.title} ({el.release_date.substring(0, 4)})</Link></ListItem>)}
       </List>
    )
 }

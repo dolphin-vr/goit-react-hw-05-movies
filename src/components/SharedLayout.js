@@ -1,6 +1,6 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
-import { Header, MainNav } from "./SharedLayout.styled";
+import { Header, MainNav, StyledLink } from "./SharedLayout.styled";
 
 const Wrapper = styled.div`
    padding: 20px;
@@ -12,8 +12,8 @@ export const SharedLayout = ()=>{
       <Wrapper>
       <Header>
          <MainNav>
-            <li><NavLink to="/" >Home</NavLink></li>
-            <li><NavLink to="movies" end>Movies</NavLink></li>
+            <li><StyledLink to="/" >Home</StyledLink></li>
+            <li><StyledLink to="movies" end>Movies</StyledLink></li>
          </MainNav>
       </Header>
       <Outlet/>

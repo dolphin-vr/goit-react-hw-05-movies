@@ -7,8 +7,8 @@ export const Review = () => {
   const { id } = useParams();
   const [reviews, setReviews] = useState([]);
   const [errorr, setErrorr] = useState(false);
-  const controllerRev = useRef();
 
+  const controllerRev = useRef();
   useEffect(() => {
     if (controllerRev.current) {
       controllerRev.current.abort();
@@ -47,7 +47,3 @@ export const Review = () => {
     </div>
   );
 };
-
-// {reviews.length>0 && <div>{reviews[0].author} : {reviews[0].content}</div>}
-// {errorr && <span>ooops</span> }
-// {/* <span>{showReview.toString()}</span> */}
