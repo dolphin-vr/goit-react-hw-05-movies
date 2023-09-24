@@ -34,6 +34,7 @@ export default function Home() {
   return <div>
    {loader}
    {error}
+   <h1>Trending today</h1>
    <Trends movies={trends} />
   </div>;
 }

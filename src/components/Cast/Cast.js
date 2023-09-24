@@ -7,7 +7,7 @@ import { ErrMsg } from 'components/SharedLayout.styled';
 import photoMale from '../../img/nophoto-male.svg';
 import photoFemale from '../../img/nophoto-female.svg';
 
-export const Cast = ()=>{
+const Cast = ()=>{
    const { id } = useParams();
    const [credits, setCredits] = useState(null);
    const [loaderc, setLoaderc] = useState(false);
@@ -59,3 +59,4 @@ export const Cast = ()=>{
       </div>
    )
 }
+export default Cast;
