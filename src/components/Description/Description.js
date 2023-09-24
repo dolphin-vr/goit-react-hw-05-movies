@@ -8,7 +8,7 @@ export const Description = ({ movie }) => {
       <img src={posterUrl} alt={movie.title} />
       <Info>
         <h2>
-          {movie.title} ({movie.release_date})
+          {movie.title} ({movie.release_date.substring(0, 4)})
         </h2>
         <h3>Overview</h3>
         <p>{movie.overview}</p>
